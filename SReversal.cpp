@@ -163,26 +163,26 @@ namespace mwave
 		return true;
 
 	}
-	
+
 	void SReversal::Serialize(std::ostream& os)
 	{
 		__int32 i{ __int32(m_iLook4) };
-		os.write((const char*) & i, sizeof(__int32));
-		
+		os.write((const char*)&i, sizeof(__int32));
+
 		i = m_iPeriod;
-		os.write((const char*) & i, sizeof(__int32));
+		os.write((const char*)&i, sizeof(__int32));
 
 		i = m_iLastPeak;
-		os.write((const char*) & i, sizeof(__int32));
+		os.write((const char*)&i, sizeof(__int32));
 
 		i = m_iLastLeg;
-		os.write((const char*) & i, sizeof(__int32));
+		os.write((const char*)&i, sizeof(__int32));
 
-		os.write((const char*) &m_EmptyValue, sizeof m_EmptyValue);
+		os.write((const char*)&m_EmptyValue, sizeof m_EmptyValue);
 
 		os << m_Buffers;
 	}
-	
+
 	void SReversal::Serialize(std::istream& is)
 	{
 		__int32 i;
@@ -193,13 +193,18 @@ namespace mwave
 		m_iPeriod = i;
 
 		is.read((char*)&i, sizeof(__int32));
-		m_iLastPeak=i;
+		m_iLastPeak = i;
 
 		is.read((char*)&i, sizeof(__int32));
-		m_iLastLeg=1;
+		m_iLastLeg = 1;
 
 		is.read((char*)&m_EmptyValue, sizeof m_EmptyValue);
 
 		is >> m_Buffers;
+	}
+
+	double SReversal::GetEmptyValue() const
+	{
+		return m_EmptyValue;
 	}
 }

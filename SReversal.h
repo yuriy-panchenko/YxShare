@@ -19,6 +19,7 @@ namespace mwave
 		void Init(size_t, double empty_value = DBL_MAX);
 		void Apply(const series& open, const series& high, const series& low);
 		const std::vector< Data >& GetBuffers()const;
+		double GetEmptyValue()const;
 
 	protected:
 		void UpdateRecord(const int index, const series& open, const series& high, const series& low);
