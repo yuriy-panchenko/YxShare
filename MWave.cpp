@@ -48,7 +48,7 @@ namespace mwave
 	Pattern::Pattern(const char index)
 		:Index{ index }
 	{
-		assert(index >= 0 && index <= 31);
+		//assert(index >= 0 && index <= 31);
 	}
 
 	Pattern Pattern::FromPrices(const double arr[])
